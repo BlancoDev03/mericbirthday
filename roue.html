@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Roue des Idées - Méric 24</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="overflow: auto;"> <div class="film-grain"></div>
+    
+    <div class="container fade-in-section is-visible">
+        
+        <a href="index.html" class="action-btn outline-btn" style="width: max-content; margin-bottom: 20px;">
+            <span class="icon">⬅</span> Retour au Ticket
+        </a>
+
+        <header class="hero" style="padding-top: 10px; padding-bottom: 20px; border-bottom: none;">
+            <h1 class="netflix-title" style="font-size: 3rem;">Trouve ton Costume</h1>
+            <p class="subtitle" style="color: var(--text-muted); font-size: 0.95rem;">En panne d'inspiration ? Laisse le destin choisir ton film !</p>
+        </header>
+
+        <div class="wheel-wrapper">
+            <div class="pointer">▼</div>
+            <div class="wheel" id="wheel">
+                <div class="wheel-inner" id="wheel-inner"></div>
+            </div>
+        </div>
+
+        <button id="spin-btn" class="netflix-btn" style="display: block; margin: 30px auto; width: 100%; max-width: 300px; font-size: 1.2rem;">
+            TOURNER LA ROUE 🎡
+        </button>
+    </div>
+
+    <div id="result-overlay" class="result-overlay">
+        <div class="result-modal glass-panel">
+            <h3 style="font-family: var(--font-title); font-size: 2rem; color: var(--gold); letter-spacing: 1px;">🎬 L'univers qu'il te faut :</h3>
+            <p id="result-text" class="result-text-pop"></p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; font-style: italic;">(Clique n'importe où pour relancer)</p>
+        </div>
+    </div>
+
+    <script>
+        const wheel = document.getElementById('wheel-inner');
+        const spinBtn = document.getElementById('spin-btn');
+        const overlay = document.getElementById('result-overlay');
+        const resultText = document.getElementById('result-text');
+
+        // LA GROSSE BASE DE DONNÉES DE FILMS 
+        const moviesDatabase = [
+            "Gatsby le Magnifique 🥂", "James Bond 007 🍸", "Le Parrain 🤌", "Titanic 🚢", "Grease 🧥", "Dirty Dancing 💃",
+            "Le Seigneur des Anneaux 🧝‍♂️", "Pirates des Caraïbes 🏴‍☠️", "Harry Potter ⚡", "Indiana Jones 🤠", "Le Dernier des Mohicans 🪓", "Gladiator ⚔️", "Avatar 💙",
+            "Star Wars 🌌", "Matrix 🕶️", "Mad Max 🏜️", "Le Cinquième Élément 🚕", "Men in Black 👽", "Terminator 🤖", "Jurassic Park 🦖", "Retour vers le futur 🛹",
+            "Les Bronzés font du ski ⛷️", "OSS 117 🥖", "La Cité de la Peur 🎬", "Astérix & Obélix : Mission Cléopâtre 🏛️", "Les Tuche 🍟", "Les Visiteurs 🏰", "Le Dîner de Cons 🗼", "Very Bad Trip 🍻", "La Grande Vadrouille 🚲",
+            "Pulp Fiction 🍔", "Fight Club 🧼", "Barbie 🎀", "Shrek 🧅", "Joker 🃏", "Spider-Man 🕸️", "Avengers 🦸‍♂️", "Kill Bill 🗡️", "Forrest Gump 🏃‍♂️", "Léon 🪴", "Le Fabuleux Destin d'Amélie Poulain 🥄"
+        ];
+
+        let currentRotation = 0;
+        let isSpinning = false;
+
+        // Fonction pour lancer la roue
+        spinBtn.addEventListener('click', () => {
+            if (isSpinning) return; 
+            isSpinning = true;
+            
+            // Fait tourner la roue aléatoirement (entre 5 et 10 tours)
+            const randomSpins = (Math.floor(Math.random() * 5) + 5) * 360; 
+            const randomAngle = Math.floor(Math.random() * 360);
+            currentRotation += randomSpins + randomAngle;
+            wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+            // À la fin de l'animation de 4 secondes
+            setTimeout(() => {
+                // Pioche un film au hasard
+                const randomIndex = Math.floor(Math.random() * moviesDatabase.length);
+                resultText.textContent = moviesDatabase[randomIndex];
+                
+                // Afficher la Pop-up
+                overlay.style.display = 'flex';
+                // Un petit délai est nécessaire pour que la transition CSS s'active correctement
+                setTimeout(() => {
+                    overlay.classList.add('active');
+                }, 10);
+                
+                isSpinning = false;
+            }, 4000); 
+        });
+
+        // Fonction pour fermer la Pop-up au clic
+        overlay.addEventListener('click', () => {
+            overlay.classList.remove('active');
+            // On attend la fin de l'animation de fermeture (0.4s) pour cacher l'élément
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 400);
+        });
+    </script>
+</body>
+</html>
