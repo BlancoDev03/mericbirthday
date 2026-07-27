@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méric 24 : L'Édition Spéciale</title>
+    <!-- Polices Google : Bebas Neue pour les titres et Montserrat pour le texte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- OVERLAY VIDÉO TRAILER & TRANSITION CINÉMA -->
+    <div id="video-overlay" class="overlay">
+        
+        <div id="start-screen">
+            <h1 class="start-title glow-text">MÉRIC 24 ANS</h1>
+            <p class="start-subtitle">Mettez le son à fond 🔊</p>
+            <button id="start-btn" class="netflix-btn">LANCER LE TRAILER 🍿</button>
+        </div>
+
+        <video id="trailer-video" src="ton-trailer.mp4" playsinline preload="auto"></video>
+        <button id="skip-btn" class="skip-btn" style="display: none;">Skip Trailer ⏭</button>
+        
+        <!-- Rideaux de cinéma effet velours -->
+        <div id="curtain-left" class="curtain curtain-left"></div>
+        <div id="curtain-right" class="curtain curtain-right"></div>
+    </div>
+
+    <!-- CONTENU PRINCIPAL DU SITE -->
+    <div id="main-content" class="container">
+        
+        <!-- Effet grain de film en arrière-plan -->
+        <div class="film-grain"></div>
+
+        <header class="hero fade-in-section">
+            <div class="hero-content">
+                <h1 class="netflix-title">Méric : 24 Ans</h1>
+                <p class="subtitle">🎬 L'Édition Spéciale — Samedi 12 Septembre 🎬</p>
+            </div>
+        </header>
+
+        <!-- TICKET INTERACTIF PREMIUM AVEC FLIP 3D -->
+        <div class="ticket-wrapper fade-in-section">
+            <div class="ticket" id="golden-ticket" onclick="toggleTicket()">
+                <div class="ticket-inner-3d">
+                    
+                    <!-- RECTO (FRONT) -->
+                    <div class="ticket-face ticket-front">
+                        <div class="ticket-inner">
+                            <div class="ticket-header">
+                                <span class="star">★</span> GOLDEN TICKET <span class="star">★</span>
+                            </div>
+                            <div class="ticket-info">
+                                <div class="info-row">
+                                    <span class="label">Rôle</span>
+                                    <span id="ticket-name" class="value highlight">GUEST</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Thème</span>
+                                    <span class="value highlight">FILMS 🎬</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Ton perso</span>
+                                    <span id="ticket-role" class="value highlight">MYSTÈRE</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="label">Lieu</span>
+                                    <span class="value">Salle Gabriel Perronet</span>
+                                </div>
+                            </div>
+                            <div class="barcode"></div>
+                        </div>
+                    </div>
+
+                    <!-- VERSO (BACK) -->
+                    <div class="ticket-face ticket-back">
+                        <div class="ticket-inner">
+                            <div class="ticket-header">
+                                <span class="star">★</span> INFOS SÉCRÈTES <span class="star">★</span>
+                            </div>
+                            <div class="ticket-back-content">
+                                <div class="back-item">
+                                    <span class="emoji">🚫🎁</span>
+                                    <p>Ne vous sentez pas obligé de faire un cadeau, <br><strong class="highlight-yellow">votre présence le sera déjà !</strong></p>
+                                </div>
+                                <div class="back-item">
+                                    <span class="emoji">🎵</span>
+                                    <p><strong>Vibes :</strong> Rap, Pop, Electro, Techno</p>
+                                </div>
+                                <div class="back-item">
+                                    <span class="emoji">🔊</span>
+                                    <p><strong>Sono :</strong> Cobra Sonorisation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Texte d'aide animé -->
+            <p class="ticket-hint">👆 Cliquez sur le ticket pour changer de recto/verso</p>
+        </div>
+
+        <!-- LE THÈME & LE JEU -->
+        <div class="section glass-panel theme-section fade-in-section">
+            <h2 class="section-title">🎭 Le Thème : "Films & Cinéma"</h2>
+            <div class="section-content">
+                <p>La règle est simple : habille-toi selon l'un de tes films préférés ! Que tu sois en mode <strong>chic, western, pirates</strong>, fantastique ou comédie, tout est permis.</p>
+                <div class="highlight-box">
+                    <strong>🎯 Le grand jeu :</strong> Nous devrons tous retrouver la référence cinématographique de chacun ! Soyez créatifs.
+                </div>
+            </div>
+        </div>
+
+        <!-- BOUTONS D'ACTION PREMIUM -->
+        <div class="action-buttons fade-in-section">
+            <a href="#" class="action-btn outline-btn"><span class="icon">🚗</span> Covoiturages</a>
+            <a href="#" class="action-btn outline-btn"><span class="icon">👕</span> Dress Code</a>
+            <a href="#" class="action-btn gold-btn wheel-btn"><span class="icon">🎡</span> Roue des Idées</a>
+        </div>
+
+        <!-- LE PITCH -->
+        <div class="section glass-panel fade-in-section">
+            <h2 class="section-title">🍿 Le Synopsis</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">15h00</span>
+                    <span class="desc"><strong>Warm-up :</strong> Arrivée chill, pétanque, jeux.</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">20h00</span>
+                    <span class="desc"><strong>Le Grand Banquet :</strong> Aligot & terroir.</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">22h30</span>
+                    <span class="desc"><strong>La Soirée :</strong> On pousse la sono à fond.</span>
+                </div>
+                <div class="timeline-item end">
+                    <span class="time">Dim. 11h</span>
+                    <span class="desc"><strong>Post-Générique :</strong> Brunch et ménage.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- LE MOT DU RÉALISATEUR -->
+        <div class="section glass-panel director-note fade-in-section">
+            <h3 class="director-title">🎬 Le mot du réalisateur</h3>
+            <p class="quote">"Pour mes 24 ans, mon plus beau cadeau c'est qu'on passe un pur moment de folie et de convivialité tous ensemble ! Préparez vos meilleurs costumes, ramenez votre plus belle énergie, on va célébrer ça dignement autour d'un grand banquet et de grosses basses. Hâte de vous voir !"</p>
+        </div>
+
+        <!-- LA CARTE -->
+        <div class="section glass-panel map-section fade-in-section">
+            <h2 class="section-title">📍 Le Lieu de Tournage</h2>
+            <p class="map-desc"><strong>Salle des fêtes Gabriel Perronet</strong> (En bas de chez moi au Vernet)</p>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2766.3272285967555!2d3.4645583758376763!3d46.104386190498076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f6cd1b43e474a3%3A0x74ff5cad602fce38!2sComplexe%20Gabriel%20Peronnet!5e0!3m2!1sfr!2sfr!4v1785184988541!5m2!1sfr!2sfr" 
+                    width="100%" 
+                    height="250" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+        
+
+        <!-- FORMULAIRE RSVP -->
+        <div class="section glass-panel fade-in-section">
+            <h2 class="section-title">🎥 Casting (RSVP)</h2>
+            <form action="https://formspree.io/f/REMPLACE_CA" method="POST" class="modern-form">
+                
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder=" ">
+                    <label for="name">Prénom & Nom (Ex: Jean Dujardin)</label>
+                    <div class="focus-border"></div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="movie_role" name="movie_role" required placeholder=" ">
+                    <label for="movie_role">Ton Personnage / Film</label>
+                    <div class="focus-border"></div>
+                </div>
+
+                <div class="form-group select-group">
+                    <label for="presence" class="static-label">Présence au Tournage</label>
+                    <select id="presence" name="presence" required>
+                        <option value="samedi_dimanche">Le total : Samedi aprem + Soirée + Dimanche</option>
+                        <option value="samedi_soir">Juste le Samedi Soir</option>
+                        <option value="absent">Je ne pourrai pas être là 😢</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="netflix-btn submit-btn">VALIDER MON TICKET</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const videoOverlay = document.getElementById('video-overlay');
+        const startScreen = document.getElementById('start-screen');
+        const startBtn = document.getElementById('start-btn');
+        const video = document.getElementById('trailer-video');
+        const skipBtn = document.getElementById('skip-btn');
+        const mainContent = document.getElementById('main-content');
+        const curtainLeft = document.getElementById('curtain-left');
+        const curtainRight = document.getElementById('curtain-right');
+        
+        const nameInput = document.getElementById('name');
+        const roleInput = document.getElementById('movie_role');
+        const ticketName = document.getElementById('ticket-name');
+        const ticketRole = document.getElementById('ticket-role');
+
+        // Gestion Vidéo
+        startBtn.addEventListener('click', () => {
+            startScreen.style.opacity = '0';
+            setTimeout(() => startScreen.style.display = 'none', 500);
+            video.volume = 1.0; 
+            video.muted = false;
+            video.play().catch(e => console.log("Erreur de lecture :", e));
+            skipBtn.style.display = 'block';
+        });
+
+        function triggerCinematicTransition() {
+            skipBtn.style.opacity = '0';
+            
+            curtainLeft.style.transform = 'translateX(0) scaleX(1)';
+            curtainRight.style.transform = 'translateX(0) scaleX(1)';
+            
+            setTimeout(() => {
+                video.style.display = 'none';
+                mainContent.style.opacity = '1';
+                mainContent.style.transform = 'translateY(0)';
+                document.body.style.overflow = 'auto';
+                
+                curtainLeft.style.transform = 'translateX(-100%)';
+                curtainRight.style.transform = 'translateX(100%)';
+                
+                setTimeout(() => {
+                    videoOverlay.style.display = 'none';
+                    triggerScrollAnimations();
+                }, 1200);
+            }, 800); 
+        }
+
+        video.addEventListener('ended', triggerCinematicTransition);
+        skipBtn.addEventListener('click', triggerCinematicTransition);
+
+        // Mise à jour du Ticket en direct
+        function updateTicket() {
+            ticketName.textContent = nameInput.value ? nameInput.value : "GUEST";
+            ticketRole.textContent = roleInput.value ? roleInput.value : "MYSTÈRE";
+        }
+        nameInput.addEventListener('input', updateTicket);
+        roleInput.addEventListener('input', updateTicket);
+
+        // Nouvelle fonction : FLIP DU TICKET 3D
+        function toggleTicket() {
+            const ticket = document.getElementById('golden-ticket');
+            ticket.classList.toggle('is-flipped');
+        }
+
+        // Animations au scroll
+        function triggerScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-section').forEach((section) => {
+                observer.observe(section);
+            });
+        }
+    </script>
+</body>
+</html>
