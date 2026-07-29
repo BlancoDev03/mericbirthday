@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Bande Originale - Méric 24</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="overflow: auto;">
+
+    <!-- Effet grain de film en arrière-plan -->
+    <div class="film-grain"></div>
+
+    <div class="container fade-in-section is-visible">
+        
+        <!-- Bouton retour vers le ticket -->
+        <a href="index.html" class="action-btn outline-btn" style="width: max-content; margin-bottom: 20px;">
+            <span class="icon">⬅</span> Retour au Ticket
+        </a>
+
+        <header class="hero" style="padding-top: 10px; padding-bottom: 20px; border-bottom: none;">
+            <h1 class="netflix-title" style="font-size: 3.5rem;">La Bande Originale 🎧</h1>
+            <p class="subtitle" style="color: var(--text-muted); font-size: 0.95rem;">Rap, Pop, Electro, Techno... Ajoute tes sons préférés pour faire exploser les basses !</p>
+        </header>
+
+        <!-- L'INTÉGRATION DE LA PLAYLIST SPOTIFY -->
+        <div class="glass-panel" style="padding: 10px; border: 1px solid var(--net-red); margin-top: 10px;">
+            
+            <!-- REMPLACE LE LIEN "src" PAR LE LIEN D'INTÉGRATION DE TA PLAYLIST -->
+            <iframe 
+                style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/1vE1lQG9iSV7ZB3grrsRGG?utm_source=generator&theme=0&si=a055e697350b4df9" 
+                width="100%" 
+                height="auto" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+            
+        </div>
+        
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-top: 15px;">
+            *Ouvre la playlist directement sur ton application Spotify pour pouvoir y ajouter tes propres morceaux.
+        </p>
+
+    </div>
+
+</body>
+</html>
