@@ -117,7 +117,7 @@
 
         <!-- BOUTONS D'ACTION PREMIUM -->
         <div class="action-buttons fade-in-section">
-            <a href="#" class="action-btn outline-btn"><span class="icon">🚗</span> Covoiturages</a>
+            <a href="covoiturages.html" class="action-btn outline-btn"><span class="icon">🚗</span> Covoiturages</a>
             <a href="#" class="action-btn outline-btn"><span class="icon">👕</span> Dress Code</a>
             <a href="roue.html" class="action-btn gold-btn wheel-btn"><span class="icon">🎡</span> Roue des Idées</a>
         </div>
@@ -246,8 +246,32 @@
             }, 800); 
         }
 
-        video.addEventListener('ended', triggerCinematicTransition);
-        skipBtn.addEventListener('click', triggerCinematicTransition);
+        let transitionTriggered = false; // Une sécurité pour ne pas lancer le rideau 2 fois
+
+// 1. Si on clique sur Skip
+skipBtn.addEventListener('click', () => {
+    if (!transitionTriggered) {
+        transitionTriggered = true;
+        triggerCinematicTransition();
+    }
+});
+
+// 2. Le détecteur de temps (à 16 secondes)
+video.addEventListener('timeupdate', () => {
+    // Dès que la vidéo atteint ou dépasse 16 secondes, le rideau se ferme
+    if (video.currentTime >= 16 && !transitionTriggered) {
+        transitionTriggered = true;
+        triggerCinematicTransition();
+    }
+});
+
+// 3. Sécurité au cas où la vidéo bug ou se termine autrement
+video.addEventListener('ended', () => {
+    if (!transitionTriggered) {
+        transitionTriggered = true;
+        triggerCinematicTransition();
+    }
+});
 
         // Mise à jour du Ticket en direct
         function updateTicket() {
